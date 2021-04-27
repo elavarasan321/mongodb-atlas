@@ -4,8 +4,8 @@ const UserRouter = require("./users");
 
 
 const routes = (app) => {
-  app.use("/", TaskRouter);
-  app.use("/users", UserRouter);
+  app.use("/tasks", TaskRouter);
+  app.use("/", UserRouter);
  
 };
 

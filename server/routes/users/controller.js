@@ -35,7 +35,7 @@ const {tokencreator} = require("../security/token");
     try{
         if(!exist)
         {
-            res.redirect("/user/login");
+            res.redirect("/login");
         }
         else{
             try{
@@ -48,7 +48,7 @@ const {tokencreator} = require("../security/token");
                     res.send("success login");            
                 }else
                 {
-                    res.redirect("/user/login");
+                    res.redirect("/login");
                 }
             }catch(err){
                 res.send(err);
