@@ -20,51 +20,48 @@ const {tokencreator} = require("../security/token");
             email:req.body.email,
             password:hashpass
         });
-      
-        try{
-            const saved = await user.save();
-            res.send("created success");
-        }catch(err){
-            res.send(err);
+         const saved = await user.save();
+        if(saved)
+        {
+            res.status(200).send("created success");
+           
+        }else{
+            res.status(500).send({error:"something Failed"});
        }      
       
   };
 
   const loginUser = async(req,res)=>{
+      
     const exist = await User.findOne({email:req.body.email});
-    try{
+    
         if(!exist)
         {
-            res.redirect("/login");
+            res.status(404).send({error:"user not found"});
         }
         else{
-            try{
+            
                 const checkpass = await hashcheck(req.body.password,exist.password)
                 if(checkpass)
                 {
                     const token = await tokencreator(exist.email);
                     res.cookie("jwt",token); 
                     res.cookie("uid",exist.email); 
-                    res.send("success login");            
+                    res.status(200).send("success login");            
                 }else
                 {
-                    res.redirect("/login");
+                    res.status(401).send({error:"Unauthorized user"});
                 }
-            }catch(err){
-                res.send(err);
-            }
+           
         }
-   }catch(err)
-   {
-       console.log(err);
-   }
+  
 
 };
 
 const logoutUser = (req,res)=>{      
     res.clearCookie('uid');
     res.clearCookie('jwt');
-    res.send("cookie clear");
+    res.status(440).send("session expired");
    
 };
   
