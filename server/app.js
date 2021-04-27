@@ -8,9 +8,9 @@ const cookieParser = require("cookie-parser");
 const bodyparser = require("body-parser");
 dotenv.config();
 
+const dburl =  "mongodb+srv://elavarasan:elavarasan@cluster0.sxlig.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-
-mongoose.connect(process.env.dburl,{useNewUrlParser: true , useUnifiedTopology: true},()=>{
+mongoose.connect(dburl,{useNewUrlParser: true , useUnifiedTopology: true},()=>{
     console.log("db connected");
     
     })
