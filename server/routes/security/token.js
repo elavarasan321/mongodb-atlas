@@ -12,7 +12,7 @@ const tokencreator =(email)=>{
 const tokenchecker =(token)=>{
     
     const check = jwt.verify(token,process.env.tokenkey);
-    console.log(check)
+  
     return check;   
 }
 
