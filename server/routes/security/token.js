@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const tokenkey = emailencryption
+
 
 const tokencreator =(email)=>{
     const token = jwt.sign(
