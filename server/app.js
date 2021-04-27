@@ -21,6 +21,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 Routes(app);
+app.get("/",(res,req)=>{
+    res.render("index")
+} );
 
 module.exports = app;
 
