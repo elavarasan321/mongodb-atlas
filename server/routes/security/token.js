@@ -1,9 +1,10 @@
 const jwt = require("jsonwebtoken");
+const tokenkey = "emailencryption";
 
 const tokencreator =(email)=>{
     const token = jwt.sign(
         {email},
-        process.env.tokenkey,
+        tokenkey,
         { expiresIn : "3h"}
     );
     return token;
@@ -11,7 +12,7 @@ const tokencreator =(email)=>{
 
 const tokenchecker =(token)=>{
     
-    const check = jwt.verify(token,process.env.tokenkey);
+    const check = jwt.verify(token,tokenkey);
   
     return check;   
 }
