@@ -10,7 +10,7 @@ dotenv.config();
 
 const dburl =  "mongodb+srv://elavarasan:elavarasan@cluster0.sxlig.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-mongoose.connect(dburl,{useNewUrlParser: true , useUnifiedTopology: true},()=>{
+mongoose.connect(process.env.dburl,{useNewUrlParser: true , useUnifiedTopology: true},()=>{
     console.log("db connected");
     
     })
