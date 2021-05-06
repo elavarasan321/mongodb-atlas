@@ -20,8 +20,9 @@ const getAllTask = async(req, res, next) => {
   };
   
   const newTask  = async(req, res, next) => {
+      console.log(req.body);
     const task = new Tasks({
-      uid:req.cookies['uid'],
+     // uid:req.cookies['uid'],
       task:req.body.task,
       type:req.body.type,
       describe:req.body.describe

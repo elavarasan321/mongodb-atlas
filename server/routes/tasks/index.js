@@ -6,11 +6,11 @@ const auth = require("../security/verify");
 
 
 /* GET home page. */
-router.get("/tasks", auth,controller.getAllTask );
-router.post("/tasks",auth, controller.newTask );
- router.patch("/tasks/:uid", auth,controller.updateTask );
+router.get("/tasks", controller.getAllTask );
+router.post("/tasks", controller.newTask );
+ router.patch("/tasks/:uid", controller.updateTask );
 router.get("/tasks/:uid", auth,controller.getTask );
-router.delete("/tasks/:uid",auth, controller.deleteTask );
+router.delete("/tasks/:uid", controller.deleteTask );
 
 
 module.exports = router;

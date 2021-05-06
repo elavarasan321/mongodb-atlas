@@ -5,6 +5,7 @@ const taskSchema = new mongoose.Schema({
     uid:{
         type:String,
         max:255,
+        default:"sachin@gmail.com",
         required:true
     },
     task:{
