@@ -7,8 +7,8 @@ const controller = require("./controller");
 
 /* GET home page. */
 
-router.post("/", controller.newUser );
-router.get("/login", controller.loginUser);
+router.post("/signup", controller.newUser );
+router.post("/login", controller.loginUser);
 router.get("/logout", controller.logoutUser);
 
 

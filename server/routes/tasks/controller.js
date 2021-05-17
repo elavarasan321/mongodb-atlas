@@ -53,8 +53,9 @@ const getTask  = async (req, res, next) =>{
 };
 
  const updateTask  = async(req, res, next) =>{
+     console.log(req.params.taskid)
 
-  const update = await Tasks.findOneAndUpdate({uid:req.params.uid},{$set:{task:req.body.task}});
+  const update = await Tasks.findOneAndUpdate({_id:req.params.taskid},{$set:{task:req.body.task,type:req.body.type,describe:req.body.describe}});
   if(update)
       {
           res.status(200).send("updated success");
@@ -69,7 +70,7 @@ const getTask  = async (req, res, next) =>{
 
 const deleteTask = async(req, res, next) =>{
   
-    const deleted = await Tasks.findOneAndDelete({uid:req.params.uid});
+    const deleted = await Tasks.findOneAndDelete({_id:req.params.taskid});
     if(deleted)
     {
         res.status(200).send("deleted success");

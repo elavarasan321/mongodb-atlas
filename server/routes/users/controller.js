@@ -32,7 +32,9 @@ const {tokencreator} = require("../security/token");
   };
 
   const loginUser = async(req,res)=>{
-      
+
+    console.log(req.body);
+   
     const exist = await User.findOne({email:req.body.email});
     
         if(!exist)
@@ -47,14 +49,15 @@ const {tokencreator} = require("../security/token");
                     const token = await tokencreator(exist.email);
                     res.cookie("jwt",token); 
                     res.cookie("uid",exist.email); 
-                    res.status(200).send("success login");            
+                    res.status(200).send(token); 
+                              
                 }else
                 {
                     res.status(401).send({error:"Unauthorized user"});
                 }
            
         }
-  
+          
 
 };
 
